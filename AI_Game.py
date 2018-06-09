@@ -273,6 +273,8 @@ def isValidInput(x):  # used to check if inputted variables 'initial_population'
         test = int(x)
         if int(x) <= 1:
             return [False, "You're going to need more than one bot or generation for this to work... "]
+        if int(x) > 70:
+            return [False, "That's too many bots/generations! Lower your numbers a bit! "]
     except ValueError:
         return [False, "YOU DIDN'T ENTER A NUMBER!!! "]
     return [True, "If you are reading this on the console, this program's creator made a boo-boo. Please annoy him relentlessly. "]
