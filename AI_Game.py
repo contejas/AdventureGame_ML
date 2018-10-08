@@ -39,7 +39,8 @@ def BotvBot(bot1, bot2):
     print "Bot1 vs Bot2, fight!"
 
     def printf(x):
-        if False:
+        bool = False
+        if bool:  # Toggle this to make sure
             print x
 
     energy = 0
@@ -55,6 +56,8 @@ def BotvBot(bot1, bot2):
         elif op_energy != 0:
             options = ['Sword', 'Shield', 'Potion']
             opponent_move = bot2.make_move(options)
+        else:
+            opponent_move = "TELL ME, DO YOU BLEED?"
 
         if opponent_move == 'Sword':
             op_energy -= 1
@@ -70,6 +73,8 @@ def BotvBot(bot1, bot2):
         elif energy != 0:
             options = ['Sword', 'Shield', 'Potion']
             move = bot1.make_move(options)
+        else:
+            move = "YOU WILL."
 
         if move == 'Sword':
             energy -= 1
@@ -127,6 +132,8 @@ def playAgainstBot(my_bot):  # a feature that allows you to play against a chose
         elif op_energy != 0:
             options = ['Sword', 'Shield', 'Potion']
             opponent_move = my_bot.make_move(options)
+        else:
+            opponent_move = ""
 
         if opponent_move == 'Sword':
             op_energy -= 1
@@ -135,7 +142,7 @@ def playAgainstBot(my_bot):  # a feature that allows you to play against a chose
             op_energy += 1
 
         # You choose moves
-
+        move = ""
         if energy == 0:
             options = ['Shield', 'Potion']
             move = raw_input("\nShield or Potion, No Sword: ").capitalize()
@@ -201,7 +208,7 @@ def game(my_bot):  # the actual game that is to be played by the bots, or the "t
         while True:
 
             # random opponent
-
+            opponent_move = ""
             if op_energy == 0:
                 options = ['Shield', 'Potion']
                 opponent_move = random.choice(options)
@@ -216,7 +223,7 @@ def game(my_bot):  # the actual game that is to be played by the bots, or the "t
                 op_energy += 1
 
             # Bot chooses moves
-
+            move = ""
             if energy == 0:
                 options = ['Shield', 'Potion']
                 move = my_bot.make_move(options)
@@ -273,7 +280,7 @@ def isValidInput(x):  # used to check if inputted variables 'initial_population'
         test = int(x)
         if int(x) <= 1:
             return [False, "You're going to need more than one bot or generation for this to work... "]
-        if int(x) > 70:
+        if int(x) > 100:
             return [False, "That's too many bots/generations! Lower your numbers a bit! "]
     except ValueError:
         return [False, "YOU DIDN'T ENTER A NUMBER!!! "]
